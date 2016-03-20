@@ -1,0 +1,41 @@
+
+<html>
+<head>
+	<title>Chapel Compiler</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/codemirror.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper blue darken-3">
+			<a href="#" class="brand-logo center">Try Chapel Online</a>
+		</div>
+	</nav>
+	<div class="container row">
+		<form id="myform" name="myform" method="post" action="/compilecode" enctype="multipart/form-data">
+         <h5 class="center">Upload Code Here</h5>
+			<div class="center">
+				<input type="file" name="chplCode" id="fileupload"/>
+			</div>
+			<h5 class="center">Enter Code Here</h5>
+			<textarea rows="13" cols="100" id="code" name="code"></textarea>
+			<h5 class="center">Enter Input here</h5>
+			<textarea rows="10" cols="100" id="input" name="input"></textarea>
+			<div class="row center">
+				Compile With Input :
+				<input name="inputRadio" type="radio" id="inputRadio" value="true"/>
+	      	<label for="inputRadio">Yes</label>
+				<input name="inputRadio" type="radio" id="inputRadio2" value="false"/>
+	      	<label for="inputRadio2">No</label>
+			</div>
+			<div class="row center">
+				<input type="submit" value="submit" class="btn blue darken-3" name="submit" />
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</body>
+</html>
