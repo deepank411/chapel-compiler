@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/' , function (req , res ) {
-   res.sendfile( __dirname + "/index.html");
+   res.sendFile( __dirname + "/index.html");
 });
 
 app.post('/compilecode', function(req, res){
@@ -47,12 +47,7 @@ app.post('/compilecode', function(req, res){
       local_path = files['chplCode'][0]['path']
       console.log(local_path);
 
-      // fs.readFileSync(local_path, "UTF8", function(err, data) {
-      //    if (err) { throw err };
-      //    file_code = data;
-      //    console.log(file_code);
-      // });
-
+      // blocking code
       file_code = fs.readFileSync(local_path, 'UTF-8');
       console.log(file_code);
 
@@ -82,8 +77,5 @@ app.post('/compilecode', function(req, res){
 
    });
 })
-
-
-
 
 module.exports = app;

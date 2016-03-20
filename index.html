@@ -10,26 +10,31 @@
 <body>
 	<nav>
 		<div class="nav-wrapper blue darken-3">
-			<a href="#" class="brand-logo center">Try Chapel Online</a>
+			<a href="/" class="brand-logo center">Try Chapel Online</a>
 		</div>
 	</nav>
 	<div class="container row">
 		<form id="myform" name="myform" method="post" action="/compilecode" enctype="multipart/form-data">
-         <h5 class="center">Upload Code Here</h5>
-			<div class="center">
-				<input type="file" name="chplCode" id="fileupload"/>
-			</div>
-			<h5 class="center">Enter Code Here</h5>
-			<textarea rows="13" cols="100" id="code" name="code"></textarea>
-			<h5 class="center">Enter Input here</h5>
-			<textarea rows="10" cols="100" id="input" name="input"></textarea>
-			<div class="row center">
-				Compile With Input :
-				<input name="inputRadio" type="radio" id="inputRadio" value="true"/>
-	      	<label for="inputRadio">Yes</label>
-				<input name="inputRadio" type="radio" id="inputRadio2" value="false"/>
-	      	<label for="inputRadio2">No</label>
-			</div>
+         <div class="sec1">
+            <h5 class="center">Upload Code Here</h5>
+            <span class="left"><h6>Only .chpl file extension supported</h6></span>
+			   <span class="right"><input type="file" name="chplCode" id="fileupload" accept=".chpl"/></span>
+         </div><br>
+         <div class="sec2">
+			   <h5 class="center">Enter Code Here</h5>
+			   <textarea id="code" name="code"></textarea>
+         </div>
+         <div class="sec3">
+   			<h5 class="center">Enter Input here</h5>
+   			<textarea id="input" name="input"></textarea>
+   			<div class="row center">
+   				Compile With Input :
+   				<input name="inputRadio" type="radio" id="inputRadio" value="true"/>
+   	      	<label for="inputRadio">Yes</label>
+   				<input name="inputRadio" type="radio" id="inputRadio2" value="false"/>
+   	      	<label for="inputRadio2">No</label>
+   			</div>
+
 			<div class="row center">
 				<input type="submit" value="submit" class="btn blue darken-3" name="submit" />
 			</div>
@@ -37,5 +42,34 @@
 	</div>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/codemirror.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.12.0/addon/selection/active-line.min.js"></script>
+	<script type="text/javascript">
+		function enableTab(id) {
+			var el = document.getElementById(id);
+			el.onkeydown = function(e) {
+				if (e.keyCode === 9) { // tab was pressed
+					var val = this.value,
+					start = this.selectionStart,
+					end = this.selectionEnd;
+					this.value = val.substring(0, start) + '\t' + val.substring(end);
+					this.selectionStart = this.selectionEnd = start + 1;
+					return false;
+				}
+			};
+		}
+		enableTab('code');
+		enableTab('input');
+		var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+			lineNumbers: true,
+			styleActiveLine: true,
+			lineWrapping: true
+		});
+		var editor1 = CodeMirror.fromTextArea(document.getElementById("input"), {
+			lineNumbers: true,
+			styleActiveLine: true,
+			lineWrapping: true
+			});
+	</script>
 </body>
 </html>
