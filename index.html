@@ -17,9 +17,20 @@
    <div class="container row">
       <form id="myform" name="myform" method="post" action="/compilecode" enctype="multipart/form-data">
          <h5 class="center"><i class="fa fa-file-code-o"></i> Upload Code Here</h5>
-         <div class="row">
+         <!-- <div class="row">
             <div class="col l6 center"><h6>Please upload a .chpl file</h6></div>
-            <div class="col l6 center"><input type="file" name="chplCode" id="fileupload" accept=".chpl"/></div>
+            <div class="col l6 center"><input type="file" name="chplCode" id="fileupload"  accept=".chpl"/></div>
+         </div> -->
+         <div class="row">
+            <div class="file-field input-field">
+               <div class="btn blue darken-3">
+                  <span>Code File</span>
+                  <input type="file" name="chplCode" if="fileUpload" accept=".chpl">
+               </div>
+               <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+               </div>
+            </div>
          </div>
          <div class="row">
             <div class="col l6">
